@@ -100,7 +100,7 @@
   </Agent>
 
   <!-- Targets that we will execute on a Windows machine. -->
-  <Agent Name="Windows Pak and Stage" Type="UEWindowsRunner">
+  <Agent Name="Windows Pak And Stage" Type="UEWindowsRunner">
     <!-- Pak and stage the game (targeting the Game target, not Client) -->
     <ForEach Name="TargetPlatform" Values="$(GameTargetPlatformsBuiltOnWin)">
       <ForEach Name="TargetConfiguration" Values="$(GameConfigurations)">
@@ -109,7 +109,9 @@
           <Property Name="StagePlatform" Value="Windows" If="'$(StagePlatform)' == 'Win64'" />
           <Property Name="DisableCodeSign" Value="" />
           <Property Name="DisableCodeSign" Value="-NoCodeSign" If="('$(TargetPlatform)' == 'Win64') or ('$(TargetPlatform)' == 'Mac') or ('$(TargetPlatform)' == 'Linux')" />
-          <Spawn Exe="D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat" Arguments="BuildCookRun -project=$(UProjectPath) -nop4 $(DisableCodeSign) -platform=$(TargetPlatform) -clientconfig=$(TargetConfiguration) -SkipCook -cook -pak -stage -stagingdirectory=$(StageDirectory) -compressed -unattended -stdlog" />
+          <!-- <Spawn Exe="D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat" Arguments="BuildCookRun -project=$(UProjectPath) -nop4 $(DisableCodeSign) -platform=$(TargetPlatform) -clientconfig=$(TargetConfiguration) -SkipCook -cook -pak -stage -stagingdirectory=$(StageDirectory) -compressed -unattended -stdlog" /> -->
+		  <Log Message="BuildCookRun with arguments： $(UProjectPath)" />
+          <Command Name="BuildCookRun" Arguments="-project=$(UProjectPath) -nop4 $(DisableCodeSign) -platform=$(TargetPlatform) -clientconfig=$(TargetConfiguration) -SkipCook -cook -pak -stage -stagingdirectory=$(StageDirectory) -compressed -unattended -stdlog"/>
           <Zip FromDir="$(StageDirectory)\$(StagePlatform)" ZipFile="$(ProjectRoot)\dist_win64.zip" />
           <Tag BaseDir="$(StageDirectory)\$(StagePlatform)" Files="..." With="#GameStaged_$(GameTarget)_$(TargetPlatform)_$(TargetConfiguration)" />
         </Node>
