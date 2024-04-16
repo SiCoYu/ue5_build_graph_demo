@@ -1,0 +1,65 @@
+<?xml version='1.0' ?>
+<BuildGraph xmlns="http://www.epicgames.com/BuildGraph" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.epicgames.com/BuildGraph ../../Engine/Build/Graph/Schema.xsd">
+    <!-- Base Options -->
+    <Option Name="ProjectName"         DefaultValue=""                Description="project path like D:\UEProj\BuildTest\BuildTest.uproject" />
+    <Option Name="ProjectDir"          DefaultValue=""                Description="for run BuildGraph scripts uproject, same as ProjectPath usually" />
+    <Option Name="Platform"            DefaultValue=""                Description="target platform like Windows, Android, IOS and so on"/>
+    <Option Name="ClientConfig"        DefaultValue="Development"     Description="config like Debug, Development, Shipping" />
+    <Option Name="OutputDir"           DefaultValue=""                Description="" />
+    <Option Name="SkipBuildProject"    DefaultValue="true"            Description="skip build project default = true" />
+    <Option Name="SkipBuildEditor"     DefaultValue="true"            Description="skip build editor default = true " />
+    <Option Name="Unrealexe"           DefaultValue=""                Description="like UnrealEngine\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" />
+    <Option Name="EditorIOPort"        DefaultValue="64752"           Description="ensure the port unuse" />
+
+
+    <!-- Advance Options-->
+    <Option Name="WithClean"           DefaultValue="false"           Description="clean before build" />
+    <Option Name="WithCook"            DefaultValue="true"            Description="cook assets" />
+
+    <Property Name="ProjectFullName"   Value="$(ProjectDir)$(ProjectName).uproject" />
+    
+    <!-- Base -->
+    <Property Name="BaseCmd"           Value="-project=$(ProjectFullName) -ScriptsForProject=$(ProjectFullName)" />
+
+    <!-- Check SDK Command -->
+    <Property Name="CheckSDKCmd"       Value="Turnkey -command=VerifySdk -platform=Android -UpdateIfNeeded"            If="$(Platform) == Android" />
+
+    <!-- Editor IO Command -->
+    <Property Name="EditorIOCmd"       Value="-EditorIO -EditorIOPort=$(EditorIOPort)" />
+
+    <!-- Sub Command -->
+    <Property Name="CleanCmd"          Value="" />
+    <Property Name="CleanCmd"          Value="-clean"                                              If="$(WithClean)" />
+
+    <Property Name="HeadCmd"           Value="BuildCookRun -project=$(ProjectFullName) -target=FirstPersonGame -platform=$(Platform)" />
+    <Property Name="HeadCmd"           Value="$(HeadCmd) -cookflavor=ASTC"                         If="$(Platform) == Android" />
+    <Property Name="HeadCmd"           Value="$(HeadCmd) -prereqs -nop4 -utf8output -Unrealexe=$(Unrealexe)" />
+
+    <Property Name="BuildCmd"          Value="-build -clientconfig=$(ClientConfig)" />
+    <Property Name="BuildCmd"          Value="$(BuildCmd) -nocompile -nocompileuat"                If="$(SkipBuildProject)" />
+    <Property Name="BuildCmd"          Value="$(BuildCmd) -nocompileeditor -skipbuildeditor"       If="$(SkipBuildEditor)" />
+
+    <Property Name="CookCmd"           Value="-cook -iostore -compressed" />
+    <Property Name="CookCmd"           Value="$(BuildCmd) -skipcook"                               If="$(WithCook) == false" />
+
+
+    <Property Name="PakCmd"            Value="-pak" />
+
+    <Property Name="StageCmd"          Value="-stage" />
+
+    <Property Name="PackageCmd"        Value="-package" />
+
+    <Property Name="ArchiveCmd"        Value="-archive -archivedirectory=$(OutputDir)" />
+
+    <!-- Client Command -->
+    <Property Name="ClientCmd"         Value="$(BaseCmd) $(CheckSDKCmd) $(EditorIOCmd) $(HeadCmd) $(BuildCmd) $(CookCmd) $(PakCmd) $(StageCmd) $(PackageCmd) $(ArchiveCmd)" />
+
+    <!-- Build -->
+    <Agent Name="MyBuild"       Type="BuildOnWindows">
+        <Node Name="MyBuildNode">
+            <Log Message="BuildCookRun with arguments： $(ClientCmd)" />
+            <Command Name="BuildCookRun"        Arguments="$(ClientCmd)" />
+        </Node>
+    </Agent>
+
+</BuildGraph>
