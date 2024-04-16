@@ -1,6 +1,9 @@
 <?xml version='1.0' ?>
 <BuildGraph xmlns="http://www.epicgames.com/BuildGraph" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.epicgames.com/BuildGraph ./Schema.xsd" >
 
+  <!-- RunUAT options -->
+  <Option Name="UATPath" Restrict=".*" DefaultValue="" Description="Path to the directory that contains the RunUAT.bat" />
+  
   <!-- Environment options -->
   <Option Name="ProjectRoot" Restrict=".*" DefaultValue="" Description="Path to the directory that contains the .uproject" />
 
@@ -25,8 +28,6 @@
   <Property Name="GameStaged" Value="" />
   <Property Name="GamePatched" Value="" />
   
-  <Error Message='$(ProjectRoot)'/>
-  <Error Message='$(UProjectPath)'/>
   <Error Message="Missing project root. You must provide a project root using -ProjectRoot=..." If="'$(ProjectRoot)' == ''"/>
   <Error Message="Missing project path. You must provide a project path using -UProjectPath=..." If="'$(UProjectPath)' == ''"/>
 	
@@ -108,7 +109,7 @@
           <Property Name="StagePlatform" Value="Windows" If="'$(StagePlatform)' == 'Win64'" />
           <Property Name="DisableCodeSign" Value="" />
           <Property Name="DisableCodeSign" Value="-NoCodeSign" If="('$(TargetPlatform)' == 'Win64') or ('$(TargetPlatform)' == 'Mac') or ('$(TargetPlatform)' == 'Linux')" />
-          <Spawn Exe="c:\UnrealEngine\Engine\Build\BatchFiles\RunUAT.bat" Arguments="BuildCookRun -project=$(UProjectPath) -nop4 $(DisableCodeSign) -platform=$(TargetPlatform) -clientconfig=$(TargetConfiguration) -SkipCook -cook -pak -stage -stagingdirectory=$(StageDirectory) -compressed -unattended -stdlog" />
+          <Spawn Exe="D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat" Arguments="BuildCookRun -project=$(UProjectPath) -nop4 $(DisableCodeSign) -platform=$(TargetPlatform) -clientconfig=$(TargetConfiguration) -SkipCook -cook -pak -stage -stagingdirectory=$(StageDirectory) -compressed -unattended -stdlog" />
           <Zip FromDir="$(StageDirectory)\$(StagePlatform)" ZipFile="$(ProjectRoot)\dist_win64.zip" />
           <Tag BaseDir="$(StageDirectory)\$(StagePlatform)" Files="..." With="#GameStaged_$(GameTarget)_$(TargetPlatform)_$(TargetConfiguration)" />
         </Node>
