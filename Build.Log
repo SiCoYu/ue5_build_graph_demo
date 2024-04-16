@@ -1,0 +1,18 @@
+Running AutomationTool...
+Using bundled DotNet SDK version: 6.0.302
+Starting AutomationTool...
+Parsing command line: BuildGraph -Script=E:\WorkPlace\WP_YXK\ue5_build_graph_demo\Tools/BuildGraph.xml -ProjectRoot=E:/WorkPlace/WP_YXK/ue5_build_graph_demo -Target="Windows Pak and Stage" -UProjectPath=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/FirstPersonGame.uproject -StageDirectory=E:\WorkPlace\WP_YXK\ue5_build_graph_demo\dist -NoP4 -WriteToSharedStorage -BuildMachine
+Initializing script modules...
+Total script module initialization time: 0.23 s.
+Executing commands...
+****** [1/4] Compile FirstPersonGameEditor Win64
+
+Running: F:\UE5\UE_Src\UE_5.3_T3\Engine\Binaries\ThirdParty\DotNet\6.0.302\windows\dotnet.exe "F:\UE5\UE_Src\UE_5.3_T3\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" FirstPersonGameEditor Win64 Development -Manifest=F:\UE5\UE_Src\UE_5.3_T3\Engine\Intermediate\Build\Manifest.xml -Project="" -AllCores -log="F:\UE5\UE_Src\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBT-FirstPersonGameEditor-Win64-Development.txt"
+Log file: F:\UE5\UE_Src\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBT-FirstPersonGameEditor-Win64-Development.txt
+Total execution time: 0.20 seconds
+Unhandled exception: The argument '-Project=' does not specify a valid file name
+Took 0.32s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (F:\UE5\UE_Src\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBT-FirstPersonGameEditor-Win64-Development.txt)
+AutomationTool executed for 0h 0m 0s
+AutomationTool exiting with ExitCode=6 (6)
+BUILD FAILED

@@ -25,6 +25,11 @@
   <Property Name="GameStaged" Value="" />
   <Property Name="GamePatched" Value="" />
   
+  <Error Message='$(ProjectRoot)'/>
+  <Error Message='$(UProjectPath)'/>
+  <Error Message="Missing project root. You must provide a project root using -ProjectRoot=..." If="'$(ProjectRoot)' == ''"/>
+  <Error Message="Missing project path. You must provide a project path using -UProjectPath=..." If="'$(UProjectPath)' == ''"/>
+	
   <!-- Targets that we will execute on a Windows machine. -->
   <Agent Name="Windows Build" Type="UEWindowsRunner">
 
