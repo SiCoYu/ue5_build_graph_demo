@@ -14,7 +14,7 @@ class UEWindowsRunner(Runner):
     self.shell = 'powershell.exe'
     self.shared_storage_volume = 'Z:\\'
     self.ue_path = 'C:\\UnrealEngine'
-    self.working_directory = f'C:\\workspace\\{branch_name.replace("/","-").replace("_", "-").lower()}'
+    self.working_directory = 'fuck' # f'C:\\workspace\\{branch_name.replace("/","-").replace("_", "-").lower()}'
   
   def patch_buildgraph(self):
     return f"""{self.self_patch_buildgraph()}
