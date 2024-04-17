@@ -2,7 +2,6 @@ version: 2.1
 
 jobs:
   build:
-    executor: true
     steps:
       - checkout
       - run:
