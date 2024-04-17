@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          /home/ubuntu/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh BuildGraph -Target=All -Script=$PWD/Tools/BuildGraph.xml -Export=$PWD/ExportedGraph.json
+          D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat BuildGraph -Target=All -Script=$PWD/Tools/BuildGraph.xml -Export=$PWD/ExportedGraph.json
           ./Tools/buildgraph-to-circleci/buildgraph-to-circleci.py --json-graph $PWD/ExportedGraph.json > /tmp/generated_config.yml
       - continuation/continue:
           configuration_path: /tmp/generated_config.yml
