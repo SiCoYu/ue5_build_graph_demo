@@ -1,13 +1,12 @@
 version: 2.1
-
-# this allows you to use CircleCI's dynamic configuration feature
 setup: true
-
 orbs:
-  continuation: circleci/continuation@1.0.0
+  continuation: circleci/continuation@0.1.2
 
 jobs:
   setup:
+    machine: true
+    resource_class: vela-games/linux-runner-small
     steps:
       - checkout
       - run: |
