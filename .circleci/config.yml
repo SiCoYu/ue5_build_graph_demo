@@ -2,6 +2,8 @@ version: 2.1
 
 jobs:
   build:
+    executor: true
+      size: xlarge 
     steps:
       - checkout
       - run:
