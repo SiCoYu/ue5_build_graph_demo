@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat BuildGraph -Target=All -Script=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/BuildGraph.xml -Export=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/ExportedGraph.json
+          D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat BuildGraph -Target=Windows Cook -Script=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/BuildGraph.xml -Export=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/ExportedGraph.json
           E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/buildgraph-to-circleci/buildgraph-to-circleci.py --json-graph E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/ExportedGraph.json > E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/generated_config.yml
 workflows:    
   setup:
