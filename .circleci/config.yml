@@ -6,7 +6,7 @@ orbs:
 jobs:
   setup:
     machine: true
-    resource_class: vela-games/linux-runner-small
+    # resource_class: vela-games/linux-runner-small
     steps:
       - checkout
       - run: |
