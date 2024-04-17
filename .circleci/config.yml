@@ -1,20 +1,10 @@
 version: 2.1
-setup: true
-orbs:
-  continuation: circleci/continuation@0.1.2
 
 jobs:
-  setup:
-    machine: true
+  build:
+    machine:
+      image: 'windows-server-2022-gui:current'
+      resource_class: windows.medium
+      shell: powershell.exe -ExecutionPolicy Bypass
     steps:
-      - checkout
-      - run: |
-          D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat BuildGraph -Target=All -Script=./Tools/BuildGraph.xml -Export=./Tools/ExportedGraph.json
-          ./Tools/buildgraph-to-circleci/buildgraph-to-circleci.py --json-graph ./ExportedGraph.json > ./Tools/generated_config.yml
-      - continuation/continue:
-          configuration_path: ./Tools/generated_config.yml
-
-workflows:    
-  setup:
-    jobs:
-      - setup
+      - run: Write-Host 'Hello, Windows'
