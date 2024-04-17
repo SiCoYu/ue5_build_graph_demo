@@ -1,14 +1,16 @@
 version: 2.1
+setup: true
+orbs:
+  continuation: circleci/continuation@0.1.2
 
 jobs:
-  build:
+  setup:
     steps:
       - checkout
       - run: |
           D:/WP_YXK/UE/UE_5.3/Engine/Build/BatchFiles/RunUAT.bat BuildGraph -Target=All -Script=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/BuildGraph.xml -Export=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/ExportedGraph.json
           E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/buildgraph-to-circleci/buildgraph-to-circleci.py --json-graph E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/ExportedGraph.json > E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/generated_config.yml
 workflows:    
-    version:2
-    build_and_test:
-        jobs:
-            - build
+  setup:
+    jobs:
+      - setup
