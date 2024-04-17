@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   setup:
-    executor: true
+    executor:
     steps:
       - checkout
       - run: |
