@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  build:
+    executor: true
+    steps:
+      - checkout
+      - run:
+          name: Build UE5 Project
+          command: |
+            "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+            "D:\WP_YXK\UE\UE_5.3\Engine\Build\BatchFiles\Build.bat" MyProject Win64 Development -WaitMutex
+            
+workflows:    
+  setup:
+    jobs:
+      - build
