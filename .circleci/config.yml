@@ -6,7 +6,7 @@ orbs:
 jobs:
   setup:
     machine: true
-    resource_class: E:/WorkPlace/WP_YXK/ue5_build_graph_demo/Tools/buildgraph-to-circleci/runners/ue_windows_runner
+    resource_class: ue_windows_runner
     steps:
       - checkout
       - run: |
