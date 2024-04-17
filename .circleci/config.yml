@@ -5,10 +5,6 @@ orbs:
 
 jobs:
   setup:
-    # 使用 Windows 执行器
-    executor:
-      name: win/default
-      size: "medium"
     steps:
       - checkout
       - run: |
