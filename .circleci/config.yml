@@ -2,9 +2,6 @@ version: 2.1
 
 jobs:
   build:
-    executor:
-      name: win/default
-      size: xlarge  # UE5 构建可能需要较高的资源
     steps:
       - checkout
       - run:
