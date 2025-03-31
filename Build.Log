@@ -1,18 +1,38 @@
 Running AutomationTool...
 Using bundled DotNet SDK version: 6.0.302
 Starting AutomationTool...
-Parsing command line: BuildGraph -Script=E:\WorkPlace\WP_YXK\ue5_build_graph_demo\Tools/BuildGraph.xml -ProjectRoot=E:/WorkPlace/WP_YXK/ue5_build_graph_demo -Target="Windows Pak and Stage" -UProjectPath=E:/WorkPlace/WP_YXK/ue5_build_graph_demo/FirstPersonGame.uproject -StageDirectory=E:\WorkPlace\WP_YXK\ue5_build_graph_demo\dist -NoP4 -WriteToSharedStorage -BuildMachine
+Parsing command line: BuildGraph -Script=F:\Git_WP\UE_YXK\WP_YXK\ue5_build_graph_demo\Tools/BuildGraph.xml -set:ProjectRoot=F:/Git_WP/UE_YXK/WP_YXK/ue5_build_graph_demo -set:UProjectPath=F:/Git_WP/UE_YXK/WP_YXK/ue5_build_graph_demo/FirstPersonGame.uproject -Target="Windows Build" -set:StageDirectory=F:/Git_WP/UE_YXK/WP_YXK/ue5_build_graph_demo/dist -NoP4 -WriteToSharedStorage -BuildMachine
 Initializing script modules...
-Total script module initialization time: 0.23 s.
+Total script module initialization time: 0.20 s.
+Using C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe
 Executing commands...
-****** [1/4] Compile FirstPersonGameEditor Win64
+****** [1/2] Compile FirstPersonGameEditor Win64
 
-Running: F:\UE5\UE_Src\UE_5.3_T3\Engine\Binaries\ThirdParty\DotNet\6.0.302\windows\dotnet.exe "F:\UE5\UE_Src\UE_5.3_T3\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" FirstPersonGameEditor Win64 Development -Manifest=F:\UE5\UE_Src\UE_5.3_T3\Engine\Intermediate\Build\Manifest.xml -Project="" -AllCores -log="F:\UE5\UE_Src\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBT-FirstPersonGameEditor-Win64-Development.txt"
-Log file: F:\UE5\UE_Src\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBT-FirstPersonGameEditor-Win64-Development.txt
-Total execution time: 0.20 seconds
-Unhandled exception: The argument '-Project=' does not specify a valid file name
-Took 0.32s to run dotnet.exe, ExitCode=6
-UnrealBuildTool failed. See log for more details. (F:\UE5\UE_Src\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBT-FirstPersonGameEditor-Win64-Development.txt)
-AutomationTool executed for 0h 0m 0s
+Running: F:\UE5\UE_5.3_T3\Engine\Binaries\ThirdParty\DotNet\6.0.302\windows\dotnet.exe "F:\UE5\UE_5.3_T3\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" FirstPersonGameEditor Win64 Development -Manifest=F:\UE5\UE_5.3_T3\Engine\Intermediate\Build\Manifest.xml -Project="F:/Git_WP/UE_YXK/WP_YXK/ue5_build_graph_demo/FirstPersonGame.uproject" -AllCores -log="F:\UE5\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBA-FirstPersonGameEditor-Win64-Development.txt"
+[PakFile] Cmd = Running: F:\UE5\UE_5.3_T3\Engine\Binaries\ThirdParty\DotNet\6.0.302\windows\dotnet.exe "F:\UE5\UE_5.3_T3\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" FirstPersonGameEditor Win64 Development -Manifest=F:\UE5\UE_5.3_T3\Engine\Intermediate\Build\Manifest.xml -Project="F:/Git_WP/UE_YXK/WP_YXK/ue5_build_graph_demo/FirstPersonGame.uproject" -AllCores -log="F:\UE5\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBA-FirstPersonGameEditor-Win64-Development.txt"
+Log file: F:\UE5\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBA-FirstPersonGameEditor-Win64-Development.txt
+Using 'git status' to determine working set for adaptive non-unity build (F:\UE5\UE_5.3_T3).
+Using 'git status' to determine working set for adaptive non-unity build (F:\Git_WP\UE_YXK\WP_YXK\ue5_build_graph_demo).
+Creating makefile for FirstPersonGameEditor (no existing makefile)
+Warning: [Upgrade]
+Warning: [Upgrade] Using backward-compatible build settings. The latest version of UE sets the following values by default, which may require code changes:
+Warning: [Upgrade]     bLegacyParentIncludePaths = false               => Omits module parent folders from include paths to reduce compiler command line length. (Previously: true).
+Warning: [Upgrade]     CppStandard = CppStandardVersion.Default        => Updates C++ Standard to C++20 (Previously: CppStandardVersion.Cpp17).
+Warning: [Upgrade]     WindowsPlatform.bStrictConformanceMode = true   => Updates MSVC strict conformance mode to true (Previously: false).
+Warning: [Upgrade]     bValidateFormatStrings = true                   => Enables compile-time validation of strings+args passed to UE_LOG. (Previously: false).
+Warning: [Upgrade] Suppress this message by setting 'DefaultBuildSettings = BuildSettingsVersion.V5;' in FirstPersonGameEditor.Target.cs, and explicitly overriding settings that differ from the new defaults.
+Warning: [Upgrade]
+Warning: [Upgrade]
+Warning: [Upgrade] Using backward-compatible include order. The latest version of UE has changed the order of includes, which may require code changes. The current setting is:
+Warning: [Upgrade]     IncludeOrderVersion = EngineIncludeOrderVersion.Oldest
+Warning: [Upgrade] Suppress this message by setting 'IncludeOrderVersion = EngineIncludeOrderVersion.Latest;' in FirstPersonGameEditor.Target.cs.
+Warning: [Upgrade] Alternatively you can set this to 'EngineIncludeOrderVersion.Latest' to always use the latest include order. This will potentially cause compile errors when integrating new versions of the engine.
+Warning: [Upgrade]
+Total execution time: 1.04 seconds
+FirstPersonGameEditor modifies the values of properties: [ bStrictConformanceMode ]. This is not allowed, as FirstPersonGameEditor has build products in common with UnrealEditor.
+Remove the modified setting, change FirstPersonGameEditor to use a unique build environment by setting 'BuildEnvironment = TargetBuildEnvironment.Unique;' in the FirstPersonGameEditorTarget constructor, or set bOverrideBuildEnvironment = true to force this setting on.
+Took 1.12s to run dotnet.exe, ExitCode=6
+UnrealBuildTool failed. See log for more details. (F:\UE5\UE_5.3_T3\Engine\Programs\AutomationTool\Saved\Logs\UBA-FirstPersonGameEditor-Win64-Development.txt)
+AutomationTool executed for 0h 0m 1s
 AutomationTool exiting with ExitCode=6 (6)
 BUILD FAILED

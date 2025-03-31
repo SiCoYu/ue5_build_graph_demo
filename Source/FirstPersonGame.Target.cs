@@ -8,7 +8,8 @@ public class FirstPersonGameTarget : TargetRules
 	public FirstPersonGameTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.Add("FirstPersonGame");
+        DefaultBuildSettings = BuildSettingsVersion.V5;
+        IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_4;
+        ExtraModuleNames.Add("FirstPersonGame");
 	}
 }
